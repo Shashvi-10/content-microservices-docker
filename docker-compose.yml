@@ -1,0 +1,99 @@
+version: "3"
+services:
+
+  client:
+    build: 
+      context: ./client
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - mern-network
+
+    depends_on:
+      - apigateway
+
+    command: npm start
+    stdin_open: true
+    tty: true
+  
+  apigateway:
+    build:
+      context: ./server/apiGateway
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    networks:
+      - mern-network
+
+    depends_on:
+      - db
+      - content
+      - user
+    # environment:
+      # - MONGO_URL=mongodb://db:27017
+      # - CLIENT=http://localhost:3000
+    # command: /usr/src/app/node_modules/.bin/nodemon -L src/index.js
+
+  content:
+    build:
+      context: ./server/content
+      dockerfile: Dockerfile
+    ports:
+      - 8002:8002
+    networks:
+      - mern-network
+
+    depends_on:
+      - db
+    environment:
+      - MONGODB_URL=mongodb://db:27017
+      # - CLIENT=http://localhost:3000
+    # command: /usr/src/app/node_modules/.bin/nodemon -L src/index.js
+
+  user:
+    build:
+      context: ./server/user
+      dockerfile: Dockerfile
+    ports:
+      - 8001:8001
+    networks:
+      - mern-network
+
+    depends_on:
+      - db
+    environment:
+      - MONGODB_URL=mongodb://db:27017
+      # - CLIENT=http://localhost:3000
+    # command: /usr/src/app/node_modules/.bin/nodemon -L src/index.js
+
+  db:
+    image: mongo:3.6.19-xenial
+    ports:
+      - 27017:27017
+    networks:
+      - mern-network
+    volumes:
+      - mongo-data:/data/db
+
+  # swagger-ui:
+  #  image: swaggerapi/swagger-ui
+  #  container_name: swagger_ui_container
+  #  ports:
+  #     - "7000:7000"
+  #  volumes:
+  #     - ./swagger:/usr/share/nginx/html/swagger
+  #  environment:
+  #     API_URL: swagger/api.yaml
+  #     URLS_PRIMARY_NAME: "CheckServer"
+  #     URLS: "[{ url: 'doc/openapi.yaml', name: 'UserManagement'},
+  #         { url: 'doc/checkapi.yaml', name: 'CheckServer'},
+  #       ]"
+
+networks:
+  mern-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
+    driver: local

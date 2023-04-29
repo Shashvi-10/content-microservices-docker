@@ -1,0 +1,18 @@
+.content-title {
+    justify-content: center;
+}
+.button{
+        background-color: red;
+        border: none; /* Remove border */
+        color: white; /* White text color */
+        padding: 12px 24px; /* Add padding */
+        text-align: center; /* Center text */
+        text-decoration: none; /* Remove underline */
+        display: inline-block; /* Make it an inline element */
+        font-size: 16px; /* Set font size */
+        border-radius: 4px; /* Rounded corners */
+      }
+      
+.button:hover {
+        background-color: white; /* Darker green on hover */
+      }

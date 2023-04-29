@@ -1,0 +1,22 @@
+.HeaderComp {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3vh;
+  background-color: grey;
+  color: black;
+}
+.HeaderComp img {
+  float: left;
+  width: 70px;
+  height: 70px;
+  text-align: left;
+}
+
+.HeaderComp h1 {
+  position: relative;
+  top: 10px;
+  left: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);;
+}

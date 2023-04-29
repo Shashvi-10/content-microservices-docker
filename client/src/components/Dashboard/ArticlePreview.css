@@ -1,0 +1,51 @@
+.wrapper {
+    /* min-width: 70%;
+    max-width: 70%; */
+
+    width: 70%;
+    /* max-width: 800px; */
+    /* max-height: 100px; */
+
+    justify-content: center;
+    align-items: center;
+    
+    border-color: white;
+       border-style: solid;  
+    border-width: 1px;
+
+    margin-bottom: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+}
+
+.contentStory {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: bold;
+    color: black;
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  }
+
+  .button{
+    background-color: red;
+    border: solid; /* Remove border */
+    color: white; /* White text color */
+    padding: 12px 24px; /* Add padding */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Make it an inline element */
+    font-size: 16px; /* Set font size */
+    border-radius: 4px; /* Rounded corners */
+  }
+  
+button:hover {
+    background-color: black; /* Darker green on hover */
+  }
